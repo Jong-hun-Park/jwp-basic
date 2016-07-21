@@ -25,7 +25,7 @@ public class QuestionDao {
                 pstmt.setString(1, question.getWriter());
                 pstmt.setString(2, question.getTitle());
                 pstmt.setString(3,  question.getContents());
-                pstmt.setTimestamp(3, new Timestamp(question.getTimeFromCreateDate()));
+                pstmt.setTimestamp(4, new Timestamp(question.getTimeFromCreateDate()));
                 return pstmt;
             }
         };

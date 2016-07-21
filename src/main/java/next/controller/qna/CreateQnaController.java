@@ -38,12 +38,14 @@ public class CreateQnaController extends AbstractController{
   @Override
   public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
     Question question = new Question(request.getParameter("writer"), 
-                request.getParameter("ctitle"),
+                request.getParameter("title"),
                 request.getParameter("contents"));
     log.debug("question : {}", question);
     
     Question savedQuestion = questionDao.insert(question);
-    return jsonView().addObject("question", savedQuestion);
+    
+    return jspView("redirect:/");
+    //return jsonView().addObject("question", savedQuestion);
   }
 
 }
