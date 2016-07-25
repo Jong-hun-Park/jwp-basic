@@ -9,6 +9,7 @@ import next.dao.AnswerDao;
 import next.dao.QuestionDao;
 import next.model.Answer;
 import next.model.Question;
+import next.model.User;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,7 +38,9 @@ public class CreateQnaController extends AbstractController{
   
   @Override
   public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    Question question = new Question(request.getParameter("writer"), 
+    User user = (User) request.getSession().getAttribute("user");
+    
+    Question question = new Question(user.getUserId(), 
                 request.getParameter("title"),
                 request.getParameter("contents"));
     log.debug("question : {}", question);
